@@ -1,0 +1,17 @@
+---
+# tasks file for nginx-role
+- name: Install package
+  apt: name="{{ pkg }}"  state=present
+
+- name: start service
+  service: name="{{ svc }}" state=started
+
+- name: create file
+  file: path="{{ file_path }}" state=touch
+
+- name: copy content to file
+  copy:
+    dest: "{{ file_path }}"
+    content: |
+          <h1> Welcome to roles demo in ansible </h1>
+  notify: Restart nginx

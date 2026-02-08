@@ -1,0 +1,4 @@
+---
+# handlers file for nginx-role
+- name: Restart nginx
+  service: name="{{ svc }}" state=restarted
